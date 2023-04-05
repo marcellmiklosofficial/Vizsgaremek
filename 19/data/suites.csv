@@ -1,0 +1,6 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Wed Apr 05 11:52:23 GMT 2023","Wed Apr 05 11:52:25 GMT 2023","1943","","Registration and Login Tests","","cool.code.vizsgaremek.pages.RegistrationAndLoginTest","correctUrl","correctUrl()","The correct URL is opened"
+"passed","Wed Apr 05 11:52:21 GMT 2023","Wed Apr 05 11:52:25 GMT 2023","3908","","cool.code.vizsgaremek.pages.TermsAndConditionsTest","","cool.code.vizsgaremek.pages.TermsAndConditionsTest","displayTnC","displayTnC()","The ""Terms and Conditions"" pop up is displayed"
+"passed","Wed Apr 05 11:52:23 GMT 2023","Wed Apr 05 11:52:25 GMT 2023","2423","","cool.code.vizsgaremek.pages.TermsAndConditionsTest","","cool.code.vizsgaremek.pages.TermsAndConditionsTest","acceptTnC","acceptTnC()","The ""Terms and Conditions"" pop up can be accepted"
+"passed","Wed Apr 05 11:52:21 GMT 2023","Wed Apr 05 11:52:26 GMT 2023","5335","","After registration is successful","","cool.code.vizsgaremek.pages.RegistrationAndLoginTest$AfterRegistered","login","login()","Login is possible"
+"passed","Wed Apr 05 11:52:21 GMT 2023","Wed Apr 05 11:52:26 GMT 2023","4348","","Registration and Login Tests","","cool.code.vizsgaremek.pages.RegistrationAndLoginTest","registration","registration()","Registration is possible"

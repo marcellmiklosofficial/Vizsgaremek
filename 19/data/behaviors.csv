@@ -1,0 +1,6 @@
+"Epic","Feature","Story","FAILED","BROKEN","PASSED","SKIPPED","UNKNOWN"
+"Roxo webpage","Registration and Login","User navigates to the Registration and Login page","0","0","1","0","0"
+"","","User navigated to the Registration and Login page and Terms and Conditions is displayed","0","0","1","0","0"
+"","","User navigated to the Registration and Login page and the displayed Terms and Conditions disappears after clicking on the Accept button","0","0","1","0","0"
+"","","User successfully logs in with valid credentials","0","0","1","0","0"
+"Roxo webpage","Registration and Login","User successfully registers with valid credentials","0","0","1","0","0"
