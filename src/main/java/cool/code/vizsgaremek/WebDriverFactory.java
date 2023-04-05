@@ -11,10 +11,16 @@ public class WebDriverFactory {
     static {
         WebDriverManager.chromedriver().setup();
 
-        switch (System.getenv("BROWSER_SETTINGS")) {
-            case "github" -> TYPE = Type.GITHUB;
-            case "visible" -> TYPE = Type.VISIBLE;
-            case null, default -> TYPE = Type.INVISIBLE;
+        String variable = System.getenv("BROWSER_SETTINGS");
+
+        if (variable == null) {
+            TYPE = Type.INVISIBLE;
+        } else if (variable.equals("github")) {
+            TYPE = Type.GITHUB;
+        } else if (variable.equals("visible")) {
+            TYPE = Type.VISIBLE;
+        } else {
+            TYPE = Type.INVISIBLE;
         }
     }
 
