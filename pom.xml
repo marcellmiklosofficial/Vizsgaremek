@@ -110,6 +110,7 @@
                 <configuration>
                     <source>${version.java}</source>
                     <target>${version.java}</target>
+                    <compilerArgs>--enable-preview</compilerArgs>
                 </configuration>
             </plugin>
         </plugins>
