@@ -29,6 +29,6 @@ abstract class Page {
     }
 
     public final WebElement findElementOnPage(By locator) {
-        return wait.until(ExpectedConditions.elementToBeClickable(locator));
+        return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 }

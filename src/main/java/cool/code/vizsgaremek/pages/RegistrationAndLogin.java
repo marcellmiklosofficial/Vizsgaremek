@@ -3,9 +3,8 @@ package cool.code.vizsgaremek.pages;
 import cool.code.vizsgaremek.enums.Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
-public class RegistrationAndLoginPage extends Page {
+public class RegistrationAndLogin extends Page {
     // VARIABLES
     // - User
     private static final String USERNAME = "user_name";
@@ -14,10 +13,6 @@ public class RegistrationAndLoginPage extends Page {
     private static final String DESCRIPTION = "I need to think of something smart.";
 
     // LOCATORS
-    // - Terms and Conditions
-    private static final By POPUP_TERMS_AND_CONDITIONS = By.className("popoup");
-    private static final By BUTTON_ACCEPT_TERMS_AND_CONDITIONS = By.id("terms-and-conditions-button");
-
     // - Registration
     private static final By BUTTON_REGISTER_FORM = By.id("register-form-button");
     private static final By INPUT_USERNAME_REGISTRATION = By.id("register-username");
@@ -33,20 +28,8 @@ public class RegistrationAndLoginPage extends Page {
     private static final By INPUT_PASSWORD_LOGIN = By.id("password");
     private static final By BUTTON_LOGIN = By.xpath("//button[@onclick='myFunction()']");
 
-    public RegistrationAndLoginPage(WebDriver driver) {
+    public RegistrationAndLogin(WebDriver driver) {
         super(driver, Pages.REG_AND_LOGIN_PAGE.getUrl());
-    }
-
-    public boolean verifyVisibilityOfTnCPopup() {
-        return findElementOnPage(POPUP_TERMS_AND_CONDITIONS).isDisplayed();
-    }
-
-    public void acceptTnC() {
-        WebElement acceptTnCButton = findElementOnPage(BUTTON_ACCEPT_TERMS_AND_CONDITIONS);
-
-        if (acceptTnCButton.isDisplayed()) {
-            acceptTnCButton.click();
-        }
     }
 
     public void registerUser() {

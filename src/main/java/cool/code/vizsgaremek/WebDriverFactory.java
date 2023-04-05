@@ -1,26 +1,39 @@
 package cool.code.vizsgaremek;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 public class WebDriverFactory {
+    private static final Type TYPE;
+
+    static {
+        WebDriverManager.chromedriver().setup();
+
+        switch (System.getenv("BROWSER_SETTINGS")) {
+            case "github" -> TYPE = Type.GITHUB;
+            case "visible" -> TYPE = Type.VISIBLE;
+            case null, default -> TYPE = Type.INVISIBLE;
+        }
+    }
+
     private WebDriverFactory() {}
 
-    public static WebDriver getWebDriver(Type type) {
+    public static WebDriver getWebDriver() {
         ChromeOptions options = new ChromeOptions();
 
-        switch (type) {
+        switch (TYPE) {
             case GITHUB: options.addArguments("no-sandbox", "disable-dev-shm-usage"); //fallthrough
             case INVISIBLE: options.addArguments("headless"); //fallthrough
             case VISIBLE: options.addArguments("start-maximized"); //fallthrough
-            default: options.addArguments("incognito");
+            default: options.addArguments("incognito", "disable-extensions");
         }
 
         return new ChromeDriver(options);
     }
 
-    public enum Type {
+    private enum Type {
         VISIBLE, INVISIBLE, GITHUB
     }
 }
