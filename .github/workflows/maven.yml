@@ -34,7 +34,7 @@ jobs:
         java-version: '19'
         distribution: 'adopt'
     - name: Install dependencies
-      run: mvn dependency:go-offline compile compiler:testCompile --enable-preview
+      run: mvn dependency:go-offline compile compiler:testCompile
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     - name: Get Allure history
