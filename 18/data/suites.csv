@@ -1,0 +1,6 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"broken","Wed Apr 05 11:44:25 GMT 2023","Wed Apr 05 11:44:25 GMT 2023","36","","After registration is successful","","cool.code.vizsgaremek.pages.RegistrationAndLoginTest$AfterRegistered","login","login()","Login is possible"
+"broken","Wed Apr 05 11:44:25 GMT 2023","Wed Apr 05 11:44:25 GMT 2023","12","","cool.code.vizsgaremek.pages.TermsAndConditionsTest","","cool.code.vizsgaremek.pages.TermsAndConditionsTest","acceptTnC","acceptTnC()","The ""Terms and Conditions"" pop up can be accepted"
+"broken","Wed Apr 05 11:44:25 GMT 2023","Wed Apr 05 11:44:25 GMT 2023","7","","Registration and Login Tests","","cool.code.vizsgaremek.pages.RegistrationAndLoginTest","registration","registration()","Registration is possible"
+"broken","Wed Apr 05 11:44:25 GMT 2023","Wed Apr 05 11:44:25 GMT 2023","13","","Registration and Login Tests","","cool.code.vizsgaremek.pages.RegistrationAndLoginTest","correctUrl","correctUrl()","The correct URL is opened"
+"broken","Wed Apr 05 11:44:25 GMT 2023","Wed Apr 05 11:44:25 GMT 2023","41","","cool.code.vizsgaremek.pages.TermsAndConditionsTest","","cool.code.vizsgaremek.pages.TermsAndConditionsTest","displayTnC","displayTnC()","The ""Terms and Conditions"" pop up is displayed"
