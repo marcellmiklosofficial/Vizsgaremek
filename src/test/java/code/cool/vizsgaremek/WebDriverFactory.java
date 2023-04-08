@@ -32,7 +32,7 @@ public class WebDriverFactory {
         switch (TYPE) {
             case GITHUB: options.addArguments("no-sandbox", "disable-dev-shm-usage"); //fallthrough
             case INVISIBLE: options.addArguments("headless"); //fallthrough
-            case VISIBLE: options.addArguments("start-maximized"); //fallthrough
+            case VISIBLE: options.addArguments("window-size=1280,800"); //fallthrough
             default: options.addArguments("incognito", "disable-extensions");
         }
 
