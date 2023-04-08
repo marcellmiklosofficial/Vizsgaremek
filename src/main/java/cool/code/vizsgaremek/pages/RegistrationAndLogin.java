@@ -9,6 +9,8 @@ public class RegistrationAndLogin extends Page {
     // - User
     private static final String USERNAME = "user_name";
     private static final String PASSWORD = "supersecretpassword";
+    private static final String BUILT_IN_USERNAME = "lovasia";
+    private static final String BUILT_IN_PASSWORD = "kispal123";
     private static final String EMAIL = "lastsamurai@earth.com";
     private static final String DESCRIPTION = "I need to think of something smart.";
 
@@ -47,8 +49,8 @@ public class RegistrationAndLogin extends Page {
 
     public void loginUser() {
         findElementOnPage(BUTTON_LOGIN_FORM).click();
-        findElementOnPage(INPUT_USERNAME_LOGIN).sendKeys(USERNAME);
-        findElementOnPage(INPUT_PASSWORD_LOGIN).sendKeys(PASSWORD);
+        findElementOnPage(INPUT_USERNAME_LOGIN).sendKeys(BUILT_IN_USERNAME);
+        findElementOnPage(INPUT_PASSWORD_LOGIN).sendKeys(BUILT_IN_PASSWORD);
         findElementOnPage(BUTTON_LOGIN).click();
     }
 }

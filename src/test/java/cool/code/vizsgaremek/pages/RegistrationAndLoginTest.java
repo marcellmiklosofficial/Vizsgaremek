@@ -1,13 +1,14 @@
 package cool.code.vizsgaremek.pages;
 
+import code.cool.vizsgaremek.TestConstants;
 import code.cool.vizsgaremek.TestUtils;
-import cool.code.vizsgaremek.WebDriverFactory;
+import code.cool.vizsgaremek.WebDriverFactory;
 import cool.code.vizsgaremek.enums.Pages;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 
-@Epic("Roxo webpage")
+@Epic(TestConstants.NAME_EPIC)
 @Feature("Registration and Login")
 @DisplayName("Registration and Login Tests")
 class RegistrationAndLoginTest {
@@ -24,6 +25,7 @@ class RegistrationAndLoginTest {
     }
 
     @Test
+    @DisplayName("The correct URL is opened")
     @Description("The correct URL is opened")
     @Story("User navigates to the Registration and Login page")
     @Severity(SeverityLevel.NORMAL)
@@ -32,6 +34,7 @@ class RegistrationAndLoginTest {
     }
 
     @Test
+    @DisplayName("Registration is possible")
     @Description("Registration is possible")
     @Story("User successfully registers with valid credentials")
     @Severity(SeverityLevel.BLOCKER)
@@ -43,21 +46,16 @@ class RegistrationAndLoginTest {
         Assertions.assertTrue(registrationAndLogin.verifySuccessfulRegistration());
     }
 
-    @Nested
-    @DisplayName("After registration is successful")
-    class AfterRegistered {
-        @Test
-        @Description("Login is possible")
-        @Story("User successfully logs in with valid credentials")
-        @Severity(SeverityLevel.CRITICAL)
-        void login() {
-            new TermsAndConditions(driver).acceptTnC();
-            registrationAndLogin.registerUser();
-            driver.navigate().refresh();
-            registrationAndLogin.loginUser();
+    @Test
+    @DisplayName("Login is possible")
+    @Description("Login is possible")
+    @Story("User successfully logs in with valid credentials")
+    @Severity(SeverityLevel.CRITICAL)
+    void login() {
+        new TermsAndConditions(driver).acceptTnC();
+        registrationAndLogin.loginUser();
 
-            Assertions.assertEquals(Pages.LANDING_PAGE.getUrl(), driver.getCurrentUrl());
-        }
+        Assertions.assertEquals(Pages.LANDING_PAGE.getUrl(), driver.getCurrentUrl());
     }
 
     @AfterEach

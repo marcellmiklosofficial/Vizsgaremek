@@ -1,4 +1,4 @@
-package cool.code.vizsgaremek;
+package code.cool.vizsgaremek;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -13,12 +13,12 @@ public class WebDriverFactory {
 
         String variable = System.getenv("BROWSER_SETTINGS");
 
-        if (variable == null) {
-            TYPE = Type.INVISIBLE;
-        } else if (variable.equals("github")) {
-            TYPE = Type.GITHUB;
-        } else if (variable.equals("visible")) {
-            TYPE = Type.VISIBLE;
+        if (variable != null) {
+            switch (variable) {
+                case "github" -> TYPE = Type.GITHUB;
+                case "visible" -> TYPE = Type.VISIBLE;
+                default -> TYPE = Type.INVISIBLE;
+            }
         } else {
             TYPE = Type.INVISIBLE;
         }
