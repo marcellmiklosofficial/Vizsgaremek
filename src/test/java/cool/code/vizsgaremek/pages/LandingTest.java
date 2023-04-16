@@ -20,8 +20,6 @@ import org.openqa.selenium.WebDriver;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @Epic(TestConstants.NAME_EPIC)
 @Feature("Landing page")
 @DisplayName("Landing page Tests")
@@ -79,6 +77,23 @@ class LandingTest {
         Assertions.assertFalse(landing.isUserLoggedIn());
     }
 
+    @Test
+    @DisplayName("Introduction section has correct spelling")
+    @Description("Introduction section has correct spelling")
+    @Story("Introduction text doesn't contain any typos")
+    @Severity(SeverityLevel.TRIVIAL)
+    void introductionText() {
+        Assertions.assertTrue(landing.verifyIntroductionText(TestResources.getResource(TestResources.ResourceKeys.LANDING_INTRODUCTION_SECTION)));
+    }
+
+    @Test
+    @DisplayName("Counter section has correct title")
+    @Description("Counter section has correct title")
+    @Story("Counter title doesn't contain any typos")
+    @Severity(SeverityLevel.TRIVIAL)
+    void counterTitle() {
+        Assertions.assertTrue(landing.verifyCounterTitle(TestResources.getResource(TestResources.ResourceKeys.LANDING_COUNTER_TITLE)));
+    }
 
     @AfterEach
     void tearDown() {

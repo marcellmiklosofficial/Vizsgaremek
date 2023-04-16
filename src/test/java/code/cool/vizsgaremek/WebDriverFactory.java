@@ -30,9 +30,9 @@ public class WebDriverFactory {
         ChromeOptions options = new ChromeOptions();
 
         switch (TYPE) {
-            case GITHUB: options.addArguments("no-sandbox", "disable-dev-shm-usage"); //fallthrough
+            case GITHUB: options.addArguments("no-sandbox", "disable-dev-shm-usage", "disable-notifications"); //fallthrough
             case INVISIBLE: options.addArguments("headless"); //fallthrough
-            case VISIBLE: options.addArguments("window-size=1280,800"); //fallthrough
+            case VISIBLE: options.addArguments("window-size=1920,1080"); //fallthrough
             default: options.addArguments("incognito", "disable-extensions");
         }
 

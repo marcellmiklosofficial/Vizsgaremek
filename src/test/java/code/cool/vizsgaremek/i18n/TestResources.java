@@ -35,7 +35,11 @@ public final class TestResources {
         NAV_BAR_TEXT_BLOG("nav_bar_text_blog"),
         NAV_BAR_TEXT_GETINTOUCH("nav_bar_text_getInTouch"),
         NAV_BAR_TEXT_PROFILE("nav_bar_text_profile"),
-        NAV_BAR_TEXT_LOGOUT("nav_bar_text_logout");
+        NAV_BAR_TEXT_LOGOUT("nav_bar_text_logout"),
+
+        // LANDING PAGE
+        LANDING_INTRODUCTION_SECTION("landing_introduction_section"),
+        LANDING_COUNTER_TITLE("landing_counter_title");
 
         private final String key;
 

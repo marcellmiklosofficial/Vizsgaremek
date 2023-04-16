@@ -1,8 +1,6 @@
 package cool.code.vizsgaremek.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.ElementNotInteractableException;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -48,5 +46,9 @@ abstract class Page {
 
     public final List<WebElement> findElementsOnPage(By locator) {
         return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
+    }
+
+    protected final boolean verifyTextOnElement(WebElement element, String expectedText) {
+        return element.getText().equals(expectedText);
     }
 }
