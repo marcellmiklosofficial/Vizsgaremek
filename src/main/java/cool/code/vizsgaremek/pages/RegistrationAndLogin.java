@@ -47,10 +47,18 @@ public class RegistrationAndLogin extends Page {
         return findElementOnPage(TEXT_CONFIRMATION_MESSAGE).getText().equals("User registered!");
     }
 
-    public void loginUser() {
+    public void loginBuiltInUser() {
+        login(BUILT_IN_USERNAME, BUILT_IN_PASSWORD);
+    }
+
+    public void loginCustomUser() {
+        login(USERNAME, PASSWORD);
+    }
+
+    private void login(String username, String password) {
         findElementOnPage(BUTTON_LOGIN_FORM).click();
-        findElementOnPage(INPUT_USERNAME_LOGIN).sendKeys(BUILT_IN_USERNAME);
-        findElementOnPage(INPUT_PASSWORD_LOGIN).sendKeys(BUILT_IN_PASSWORD);
+        findElementOnPage(INPUT_USERNAME_LOGIN).sendKeys(username);
+        findElementOnPage(INPUT_PASSWORD_LOGIN).sendKeys(password);
         findElementOnPage(BUTTON_LOGIN).click();
     }
 }

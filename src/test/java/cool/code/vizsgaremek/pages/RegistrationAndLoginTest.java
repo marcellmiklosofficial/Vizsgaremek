@@ -53,7 +53,7 @@ class RegistrationAndLoginTest {
     @Severity(SeverityLevel.CRITICAL)
     void login() {
         new TermsAndConditions(driver).acceptTnC();
-        registrationAndLogin.loginUser();
+        registrationAndLogin.loginBuiltInUser();
 
         Assertions.assertEquals(Pages.LANDING_PAGE.getUrl(), driver.getCurrentUrl());
     }

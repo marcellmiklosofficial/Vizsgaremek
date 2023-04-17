@@ -27,6 +27,10 @@ abstract class Page {
                 .ignoring(NoSuchElementException.class);
     }
 
+    protected WebDriver getDriver() {
+        return driver;
+    }
+
     public final void navigateTo() {
         driver.navigate().to(url);
     }

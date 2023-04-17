@@ -34,7 +34,7 @@ class LandingTest {
 
         landing.navigateTo();
         new TermsAndConditions(driver).acceptTnC();
-        new RegistrationAndLogin(driver).loginUser();
+        new RegistrationAndLogin(driver).loginBuiltInUser();
     }
 
     @Test
