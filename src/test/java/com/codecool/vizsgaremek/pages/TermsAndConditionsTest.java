@@ -1,8 +1,8 @@
-package cool.code.vizsgaremek.pages;
+package com.codecool.vizsgaremek.pages;
 
-import code.cool.vizsgaremek.TestConstants;
-import code.cool.vizsgaremek.TestUtils;
-import code.cool.vizsgaremek.WebDriverFactory;
+import com.codecool.vizsgaremek.TestConstants;
+import com.codecool.vizsgaremek.TestUtils;
+import com.codecool.vizsgaremek.WebDriverFactory;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;

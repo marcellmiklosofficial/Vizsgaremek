@@ -1,4 +1,4 @@
-package code.cool.vizsgaremek;
+package com.codecool.vizsgaremek;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
