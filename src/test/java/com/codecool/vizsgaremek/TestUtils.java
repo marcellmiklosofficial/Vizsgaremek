@@ -1,4 +1,4 @@
-package code.cool.vizsgaremek;
+package com.codecool.vizsgaremek;
 
 import io.qameta.allure.Allure;
 import org.openqa.selenium.OutputType;

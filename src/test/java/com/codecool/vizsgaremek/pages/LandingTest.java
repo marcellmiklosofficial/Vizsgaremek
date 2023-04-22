@@ -1,9 +1,9 @@
-package cool.code.vizsgaremek.pages;
+package com.codecool.vizsgaremek.pages;
 
-import code.cool.vizsgaremek.TestConstants;
-import code.cool.vizsgaremek.WebDriverFactory;
-import code.cool.vizsgaremek.i18n.TestResources;
-import cool.code.vizsgaremek.enums.Pages;
+import com.codecool.vizsgaremek.TestConstants;
+import com.codecool.vizsgaremek.WebDriverFactory;
+import com.codecool.vizsgaremek.enums.Pages;
+import com.codecool.vizsgaremek.i18n.TestResources;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;

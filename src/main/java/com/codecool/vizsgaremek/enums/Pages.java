@@ -1,4 +1,4 @@
-package cool.code.vizsgaremek.enums;
+package com.codecool.vizsgaremek.enums;
 
 public enum Pages {
     REG_AND_LOGIN_PAGE("https://lennertamas.github.io/roxo/"),

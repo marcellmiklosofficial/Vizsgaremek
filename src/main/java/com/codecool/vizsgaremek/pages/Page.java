@@ -1,4 +1,4 @@
-package cool.code.vizsgaremek.pages;
+package com.codecool.vizsgaremek.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;

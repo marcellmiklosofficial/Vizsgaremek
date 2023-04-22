@@ -1,4 +1,4 @@
-package code.cool.vizsgaremek.i18n;
+package com.codecool.vizsgaremek.i18n;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
