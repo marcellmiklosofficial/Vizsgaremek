@@ -1,35 +1,30 @@
 package com.codecool.vizsgaremek.pages;
 
-import com.codecool.vizsgaremek.TestConstants;
-import com.codecool.vizsgaremek.WebDriverFactory;
 import com.codecool.vizsgaremek.enums.Pages;
 import com.codecool.vizsgaremek.i18n.TestResources;
 import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
 
 import java.util.Arrays;
 import java.util.List;
 
-@Epic(TestConstants.NAME_EPIC)
 @Feature("Landing page")
 @DisplayName("Landing page Tests")
-class LandingTest {
-    private WebDriver driver;
+class LandingTest extends TestBase {
     private Landing landing;
 
     @BeforeEach
+    @Override
     void setUp() {
-        driver = WebDriverFactory.getWebDriver();
+        super.setUp();
+
         landing = new Landing(driver);
 
         landing.navigateTo();
@@ -42,6 +37,7 @@ class LandingTest {
     @Description("The correct URL is opened")
     @Story("User navigates to the Landing page")
     @Severity(SeverityLevel.NORMAL)
+    @Override
     void correctUrl() {
         Assertions.assertEquals(Pages.LANDING_PAGE.getUrl(), driver.getCurrentUrl());
     }
@@ -93,10 +89,5 @@ class LandingTest {
     @Severity(SeverityLevel.TRIVIAL)
     void counterTitle() {
         Assertions.assertTrue(landing.verifyCounterTitle(TestResources.getResource(TestResources.ResourceKeys.LANDING_COUNTER_TITLE)));
-    }
-
-    @AfterEach
-    void tearDown() {
-        driver.quit();
     }
 }

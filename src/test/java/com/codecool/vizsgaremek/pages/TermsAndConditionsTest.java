@@ -1,26 +1,40 @@
 package com.codecool.vizsgaremek.pages;
 
-import com.codecool.vizsgaremek.TestConstants;
 import com.codecool.vizsgaremek.TestUtils;
-import com.codecool.vizsgaremek.WebDriverFactory;
-import io.qameta.allure.*;
-import org.junit.jupiter.api.*;
-import org.openqa.selenium.WebDriver;
+import com.codecool.vizsgaremek.enums.Pages;
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
-@Epic(TestConstants.NAME_EPIC)
 @Feature("Terms and Conditions")
 @DisplayName("Terms and Conditions Tests")
-class TermsAndConditionsTest {
-    // VARIABLES
-    private WebDriver driver;
+class TermsAndConditionsTest extends TestBase {
     private TermsAndConditions termsAndConditions;
 
     @BeforeEach
+    @Override
     void setUp() {
-        driver = WebDriverFactory.getWebDriver();
+        super.setUp();
+
         termsAndConditions = new TermsAndConditions(driver);
 
         termsAndConditions.navigateTo();
+    }
+
+    @Test
+    @DisplayName("The correct URL is opened")
+    @Description("The correct URL is opened")
+    @Story("User navigates to the Main page")
+    @Severity(SeverityLevel.NORMAL)
+    @Override
+    void correctUrl() {
+        Assertions.assertEquals(Pages.REG_AND_LOGIN_PAGE.getUrl(), driver.getCurrentUrl());
     }
 
     @Test
@@ -44,10 +58,5 @@ class TermsAndConditionsTest {
         TestUtils.makeScreenshot("The \"Terms and Conditions\" pop up can be accepted", driver);
 
         Assertions.assertFalse(termsAndConditions.verifyVisibilityOfTnCPopup());
-    }
-
-    @AfterEach
-    void tearDown() {
-        driver.quit();
     }
 }

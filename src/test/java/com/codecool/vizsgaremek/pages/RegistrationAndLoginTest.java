@@ -1,24 +1,27 @@
 package com.codecool.vizsgaremek.pages;
 
-import com.codecool.vizsgaremek.TestConstants;
 import com.codecool.vizsgaremek.TestUtils;
-import com.codecool.vizsgaremek.WebDriverFactory;
 import com.codecool.vizsgaremek.enums.Pages;
-import io.qameta.allure.*;
-import org.junit.jupiter.api.*;
-import org.openqa.selenium.WebDriver;
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
-@Epic(TestConstants.NAME_EPIC)
 @Feature("Registration and Login")
 @DisplayName("Registration and Login Tests")
-class RegistrationAndLoginTest {
-    // VARIABLES
-    private WebDriver driver;
+class RegistrationAndLoginTest extends TestBase {
     private RegistrationAndLogin registrationAndLogin;
 
     @BeforeEach
+    @Override
     void setUp() {
-        driver = WebDriverFactory.getWebDriver();
+        super.setUp();
+
         registrationAndLogin = new RegistrationAndLogin(driver);
 
         registrationAndLogin.navigateTo();
@@ -29,6 +32,7 @@ class RegistrationAndLoginTest {
     @Description("The correct URL is opened")
     @Story("User navigates to the Registration and Login page")
     @Severity(SeverityLevel.NORMAL)
+    @Override
     void correctUrl() {
         Assertions.assertEquals(Pages.REG_AND_LOGIN_PAGE.getUrl(), driver.getCurrentUrl());
     }
@@ -56,10 +60,5 @@ class RegistrationAndLoginTest {
         registrationAndLogin.loginBuiltInUser();
 
         Assertions.assertEquals(Pages.LANDING_PAGE.getUrl(), driver.getCurrentUrl());
-    }
-
-    @AfterEach
-    void tearDown() {
-        driver.quit();
     }
 }

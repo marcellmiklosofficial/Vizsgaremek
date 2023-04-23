@@ -1,6 +1,6 @@
-package cool.code.vizsgaremek.pages;
+package com.codecool.vizsgaremek.pages;
 
-import cool.code.vizsgaremek.enums.Pages;
+import com.codecool.vizsgaremek.enums.Pages;
 import org.openqa.selenium.WebDriver;
 
 public class Portfolio extends Page {
