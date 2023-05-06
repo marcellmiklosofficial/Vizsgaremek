@@ -10,6 +10,7 @@ import java.util.List;
 
 public class About extends Page {
     private static final By LIST_TEAM_MEMBERS = By.className("site-team-member");
+    private static final By LIST_TEAM_MEMBERS_NAME = By.xpath("//div[@class='site-team-member-content']/h3");
 
     private List<WebElement> teamMembers;
 
@@ -27,6 +28,10 @@ public class About extends Page {
         getAllTeamMembers();
 
         new Actions(getDriver()).scrollToElement(teamMembers.get(teamMembers.size() - 1)).perform();
+    }
+
+    public List<String> getTeamMembersNames() {
+        return findElementsOnPage(LIST_TEAM_MEMBERS_NAME).stream().map(WebElement::getText).toList();
     }
 
     private void getAllTeamMembers() {

@@ -1,6 +1,5 @@
-package com.codecool.vizsgaremek.pages;
+package com.codecool.vizsgaremek.functions;
 
-import com.codecool.vizsgaremek.TestUtils;
 import com.codecool.vizsgaremek.enums.Pages;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
@@ -14,25 +13,19 @@ import org.junit.jupiter.api.Test;
 
 @Feature("Terms and Conditions")
 @DisplayName("Terms and Conditions Tests")
-class TermsAndConditionsTest extends TestBase {
-    private TermsAndConditions termsAndConditions;
-
-    @BeforeEach
+class TestTermsAndConditions extends TestBase {
     @Override
+    @BeforeEach
     void setUp() {
         super.setUp();
 
-        termsAndConditions = new TermsAndConditions(driver);
-
-        termsAndConditions.navigateTo();
+        getTermsAndConditions().navigateTo();
     }
 
+    @Override
     @Test
     @DisplayName("The correct URL is opened")
     @Description("The correct URL is opened")
-    @Story("User navigates to the Main page")
-    @Severity(SeverityLevel.NORMAL)
-    @Override
     void correctUrl() {
         Assertions.assertEquals(Pages.REG_AND_LOGIN_PAGE.getUrl(), driver.getCurrentUrl());
     }
@@ -42,10 +35,8 @@ class TermsAndConditionsTest extends TestBase {
     @Description("The \"Terms and Conditions\" pop up is displayed")
     @Story("User navigated to the Registration and Login page and Terms and Conditions is displayed")
     @Severity(SeverityLevel.NORMAL)
-    void displayTnC() {
-        TestUtils.makeScreenshot("The \"Terms and Conditions\" pop up is displayed", driver);
-
-        Assertions.assertTrue(termsAndConditions.verifyVisibilityOfTnCPopup());
+    void tnCVisible() {
+        Assertions.assertTrue(getTermsAndConditions().verifyVisibilityOfTnCPopup());
     }
 
     @Test
@@ -54,9 +45,8 @@ class TermsAndConditionsTest extends TestBase {
     @Story("User navigated to the Registration and Login page and the displayed Terms and Conditions disappears after clicking on the Accept button")
     @Severity(SeverityLevel.TRIVIAL)
     void acceptTnC() {
-        termsAndConditions.acceptTnC();
-        TestUtils.makeScreenshot("The \"Terms and Conditions\" pop up can be accepted", driver);
+        getTermsAndConditions().acceptTnC();
 
-        Assertions.assertFalse(termsAndConditions.verifyVisibilityOfTnCPopup());
+        Assertions.assertFalse(getTermsAndConditions().verifyVisibilityOfTnCPopup());
     }
 }

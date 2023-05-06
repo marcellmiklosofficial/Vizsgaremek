@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.Wait;
 import java.time.Duration;
 import java.util.List;
 
-abstract class Page {
+public abstract class Page {
     private static final By BUTTON_LOGOUT = By.id("logout-link");
 
     private final WebDriver driver;
