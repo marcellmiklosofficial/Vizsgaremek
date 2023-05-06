@@ -48,4 +48,13 @@ class AboutTest extends TestBase {
 
         Assertions.assertEquals(6, about.numberOfTeamMembers());
     }
+
+    @Test
+    @DisplayName("The members' data are correct")
+    @Description("The members' data are correct")
+    @Story("User can see the correct details of team members on the About Page")
+    @Severity(SeverityLevel.TRIVIAL)
+    void detailsOfTeamMembers() {
+
+    }
 }

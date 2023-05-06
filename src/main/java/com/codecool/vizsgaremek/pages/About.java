@@ -11,17 +11,27 @@ import java.util.List;
 public class About extends Page {
     private static final By LIST_TEAM_MEMBERS = By.className("site-team-member");
 
+    private List<WebElement> teamMembers;
+
     public About(WebDriver driver) {
         super(driver, Pages.ABOUT_PAGE.getUrl());
     }
 
     public int numberOfTeamMembers() {
-        return findElementsOnPage(LIST_TEAM_MEMBERS).size();
+        getAllTeamMembers();
+
+        return teamMembers.size();
     }
 
     public void scrollToTeamMemberSection() {
-        List<WebElement> teamMembers = findElementsOnPage(LIST_TEAM_MEMBERS);
+        getAllTeamMembers();
 
         new Actions(getDriver()).scrollToElement(teamMembers.get(teamMembers.size() - 1)).perform();
+    }
+
+    private void getAllTeamMembers() {
+        if (teamMembers == null || teamMembers.isEmpty()) {
+            teamMembers = findElementsOnPage(LIST_TEAM_MEMBERS);
+        }
     }
 }
