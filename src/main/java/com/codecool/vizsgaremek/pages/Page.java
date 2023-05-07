@@ -35,6 +35,12 @@ public abstract class Page {
         driver.navigate().to(url);
     }
 
+    public final void logoutUser() {
+        if (isUserLoggedIn()) {
+            findElementOnPage(BUTTON_LOGOUT).click();
+        }
+    }
+
     public final boolean isUserLoggedIn() {
         try {
             driver.findElement(BUTTON_LOGOUT);
@@ -50,9 +56,5 @@ public abstract class Page {
 
     public final List<WebElement> findElementsOnPage(By locator) {
         return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
-    }
-
-    protected final boolean verifyTextOnElement(WebElement element, String expectedText) {
-        return element.getText().equals(expectedText);
     }
 }

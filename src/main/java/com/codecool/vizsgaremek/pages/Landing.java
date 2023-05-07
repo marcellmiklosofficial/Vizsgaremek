@@ -13,11 +13,7 @@ public class Landing extends Page {
     // LOCATORS
     // - Nav-menu
     private static final By LIST_NAV_MENU_ITEM = By.className("nav-item");
-    private static final By BUTTON_NAV_MENU_LOGOUT = By.id("logout-link");
-
-    // - Contents
-    private static final By TEXT_INTRODUCTION = By.xpath("//h6/following-sibling::h1");
-    private static final By TEXT_COUNTER_TITLE = By.className("text-white");
+    private static final By BUTTON_PROFILE = By.id("profile-btn");
 
     public Landing(WebDriver driver) {
         super(driver, Pages.LANDING_PAGE.getUrl());
@@ -32,17 +28,7 @@ public class Landing extends Page {
         return navMenuItems.equals(navMenuItemsOnPage);
     }
 
-    public void logoutUser() {
-        if (isUserLoggedIn()) {
-            findElementOnPage(BUTTON_NAV_MENU_LOGOUT).click();
-        }
-    }
-
-    public boolean verifyIntroductionText(String expectedText) {
-        return verifyTextOnElement(findElementOnPage(TEXT_INTRODUCTION), expectedText);
-    }
-
-    public boolean verifyCounterTitle(String expectedTitle) {
-        return verifyTextOnElement(findElementOnPage(TEXT_COUNTER_TITLE), expectedTitle);
+    public void goToProfile() {
+        findElementOnPage(BUTTON_PROFILE).click();
     }
 }

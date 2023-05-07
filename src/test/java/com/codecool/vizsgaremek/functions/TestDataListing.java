@@ -10,11 +10,15 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
+import org.json.JSONObject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
 
@@ -50,14 +54,18 @@ class TestDataListing extends TestBase {
     }
 
     @Test
-    @DisplayName("Team members' names are correct")
-    @Description("Team members' names are correct")
-    @Story("User can see correct names displayed on the About Page")
+    @DisplayName("Team members' details are correct")
+    @Description("Team members' details are correct")
+    @Story("User can see correct details displayed on the About Page")
     @Severity(SeverityLevel.NORMAL)
-    void correctMembersDetails() {
-        List<String> testData = Arrays.asList("PABLO ESCOBAR", "MONTINO RIAU", "ALEX NAASRI", "HONGMAN CHIOA", "SANTIO ANDRESS", "RAMESH PAUL");
+    void correctMembersDetails() throws IOException {
+        JSONObject jsonObject = new JSONObject(Files.readString(Path.of("src/test/resources/members_test_data.json")));
 
-        Assertions.assertEquals(testData, getPage(About.class).getTeamMembersNames());
+        List<String> testNames = jsonObject.keySet().stream().sorted().toList();
+        List<String> testOccupations = jsonObject.toMap().values().stream().map(Object::toString).sorted().toList();
+
+        Assertions.assertEquals(testNames, getPage(About.class).getTeamMembersNames().stream().sorted().toList());
+        Assertions.assertEquals(testOccupations, getPage(About.class).getTeamMembersOccupations().stream().sorted().toList());
     }
 
     @Test

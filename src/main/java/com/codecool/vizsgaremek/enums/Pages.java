@@ -5,7 +5,7 @@ public enum Pages {
     LANDING_PAGE("https://lennertamas.github.io/roxo/landing.html"),
     PORTFOLIO_PAGE("https://lennertamas.github.io/roxo/portfolio/"),
     CONTACT_PAGE("https://lennertamas.github.io/roxo/contact/"),
-    PROFILE_PAGE("https://lennertamas.github.io/roxo/profile/"),
+    PROFILE_PAGE("https://lennertamas.github.io/roxo/profile"),
     ABOUT_PAGE("https://lennertamas.github.io/roxo/about/"),
     BLOG_PAGE("https://lennertamas.github.io/roxo/blog/");
 
