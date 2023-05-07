@@ -2,6 +2,8 @@ package com.codecool.vizsgaremek.functions;
 
 import com.codecool.vizsgaremek.TestUtils;
 import com.codecool.vizsgaremek.enums.Pages;
+import com.codecool.vizsgaremek.pages.RegistrationAndLogin;
+import com.codecool.vizsgaremek.pages.TermsAndConditions;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
@@ -20,8 +22,8 @@ class TestRegistration extends TestBase {
     void setUp() {
         super.setUp();
 
-        getTermsAndConditions().navigateTo();
-        getTermsAndConditions().acceptTnC();
+        getPage(TermsAndConditions.class).navigateTo();
+        getPage(TermsAndConditions.class).acceptTnC();
     }
 
     @Override
@@ -38,9 +40,9 @@ class TestRegistration extends TestBase {
     @Story("User successfully registers with valid credentials")
     @Severity(SeverityLevel.BLOCKER)
     void registration() {
-        getRegistrationAndLogin().registerUser();
+        getPage(RegistrationAndLogin.class).registerUser();
         TestUtils.makeScreenshot("Registration successful", driver);
 
-        Assertions.assertTrue(getRegistrationAndLogin().verifySuccessfulRegistration());
+        Assertions.assertTrue(getPage(RegistrationAndLogin.class).verifySuccessfulRegistration());
     }
 }

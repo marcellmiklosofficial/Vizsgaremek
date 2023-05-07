@@ -3,6 +3,8 @@ package com.codecool.vizsgaremek.functions;
 import com.codecool.vizsgaremek.TestUtils;
 import com.codecool.vizsgaremek.enums.Pages;
 import com.codecool.vizsgaremek.i18n.TestResources;
+import com.codecool.vizsgaremek.pages.About;
+import com.codecool.vizsgaremek.pages.Landing;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
@@ -24,7 +26,7 @@ class TestDataListing extends TestBase {
     void setUp() {
         super.setUp();
 
-        getAbout().navigateTo();
+        getPage(About.class).navigateTo();
     }
 
     @Override
@@ -41,10 +43,10 @@ class TestDataListing extends TestBase {
     @Story("User can see six team members displayed on the About Page")
     @Severity(SeverityLevel.TRIVIAL)
     void numberOfTeamMembers() {
-        getAbout().scrollToTeamMemberSection();
+        getPage(About.class).scrollToTeamMemberSection();
         TestUtils.makeScreenshot("Team members section", driver);
 
-        Assertions.assertEquals(6, getAbout().numberOfTeamMembers());
+        Assertions.assertEquals(6, getPage(About.class).numberOfTeamMembers());
     }
 
     @Test
@@ -55,7 +57,7 @@ class TestDataListing extends TestBase {
     void correctMembersDetails() {
         List<String> testData = Arrays.asList("PABLO ESCOBAR", "MONTINO RIAU", "ALEX NAASRI", "HONGMAN CHIOA", "SANTIO ANDRESS", "RAMESH PAUL");
 
-        Assertions.assertEquals(testData, getAbout().getTeamMembersNames());
+        Assertions.assertEquals(testData, getPage(About.class).getTeamMembersNames());
     }
 
     @Test
@@ -71,6 +73,6 @@ class TestDataListing extends TestBase {
                 TestResources.getResource(TestResources.ResourceKeys.NAV_BAR_TEXT_BLOG),
                 TestResources.getResource(TestResources.ResourceKeys.NAV_BAR_TEXT_GETINTOUCH));
 
-        Assertions.assertTrue(getLanding().verifyNavMenuLabels(navBarItemLabels));
+        Assertions.assertTrue(getPage(Landing.class).verifyNavMenuLabels(navBarItemLabels));
     }
 }

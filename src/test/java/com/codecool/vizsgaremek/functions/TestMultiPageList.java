@@ -1,6 +1,7 @@
 package com.codecool.vizsgaremek.functions;
 
 import com.codecool.vizsgaremek.enums.Pages;
+import com.codecool.vizsgaremek.pages.Blog;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
@@ -22,7 +23,7 @@ class TestMultiPageList extends TestBase {
     void setUp() {
         super.setUp();
 
-        getBlog().navigateTo();
+        getPage(Blog.class).navigateTo();
     }
 
     @Override
@@ -41,6 +42,6 @@ class TestMultiPageList extends TestBase {
     void gatherAllTitles() {
         List<String> testData = Arrays.asList("Design Inspiration: The Best Projects From December", "The 10 Biggest Rebrands and Logo Designs of 2019", "Design Inspiration: The Best Projects From November", "Pt Chooses Classic Blue for Its Colour of the Year 2020", "The 10 Biggest Product Stories of 2019");
 
-        Assertions.assertEquals(testData, getBlog().getAllTitlesFromMultiPageList());
+        Assertions.assertEquals(testData, getPage(Blog.class).getAllTitlesFromMultiPageList());
     }
 }

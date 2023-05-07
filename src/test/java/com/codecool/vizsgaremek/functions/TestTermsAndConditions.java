@@ -1,6 +1,7 @@
 package com.codecool.vizsgaremek.functions;
 
 import com.codecool.vizsgaremek.enums.Pages;
+import com.codecool.vizsgaremek.pages.TermsAndConditions;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
@@ -19,7 +20,7 @@ class TestTermsAndConditions extends TestBase {
     void setUp() {
         super.setUp();
 
-        getTermsAndConditions().navigateTo();
+        getPage(TermsAndConditions.class).navigateTo();
     }
 
     @Override
@@ -36,7 +37,7 @@ class TestTermsAndConditions extends TestBase {
     @Story("User navigated to the Registration and Login page and Terms and Conditions is displayed")
     @Severity(SeverityLevel.NORMAL)
     void tnCVisible() {
-        Assertions.assertTrue(getTermsAndConditions().verifyVisibilityOfTnCPopup());
+        Assertions.assertTrue(getPage(TermsAndConditions.class).verifyVisibilityOfTnCPopup());
     }
 
     @Test
@@ -45,8 +46,8 @@ class TestTermsAndConditions extends TestBase {
     @Story("User navigated to the Registration and Login page and the displayed Terms and Conditions disappears after clicking on the Accept button")
     @Severity(SeverityLevel.TRIVIAL)
     void acceptTnC() {
-        getTermsAndConditions().acceptTnC();
+        getPage(TermsAndConditions.class).acceptTnC();
 
-        Assertions.assertFalse(getTermsAndConditions().verifyVisibilityOfTnCPopup());
+        Assertions.assertFalse(getPage(TermsAndConditions.class).verifyVisibilityOfTnCPopup());
     }
 }
