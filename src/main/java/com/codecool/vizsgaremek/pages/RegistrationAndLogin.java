@@ -3,6 +3,7 @@ package com.codecool.vizsgaremek.pages;
 import com.codecool.vizsgaremek.enums.Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class RegistrationAndLogin extends Page {
     // VARIABLES
@@ -30,6 +31,10 @@ public class RegistrationAndLogin extends Page {
     private static final By INPUT_PASSWORD_LOGIN = By.id("password");
     private static final By BUTTON_LOGIN = By.xpath("//button[@onclick='myFunction()']");
 
+    // - Terms and Conditions
+    private static final By POPUP_TERMS_AND_CONDITIONS = By.className("popup");
+    private static final By BUTTON_ACCEPT_TERMS_AND_CONDITIONS = By.id("terms-and-conditions-button");
+
     public RegistrationAndLogin(WebDriver driver) {
         super(driver, Pages.REG_AND_LOGIN_PAGE.getUrl());
     }
@@ -51,8 +56,16 @@ public class RegistrationAndLogin extends Page {
         login(BUILT_IN_USERNAME, BUILT_IN_PASSWORD);
     }
 
-    public void loginCustomUser() {
-        login(USERNAME, PASSWORD);
+    public boolean verifyVisibilityOfTnCPopup() {
+        return findElementOnPage(POPUP_TERMS_AND_CONDITIONS).isDisplayed();
+    }
+
+    public void acceptTnC() {
+        WebElement acceptTnCButton = findElementOnPage(BUTTON_ACCEPT_TERMS_AND_CONDITIONS);
+
+        if (acceptTnCButton.isDisplayed()) {
+            acceptTnCButton.click();
+        }
     }
 
     private void login(String username, String password) {

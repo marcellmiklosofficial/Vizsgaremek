@@ -3,7 +3,6 @@ package com.codecool.vizsgaremek.functions;
 import com.codecool.vizsgaremek.TestUtils;
 import com.codecool.vizsgaremek.enums.Pages;
 import com.codecool.vizsgaremek.pages.RegistrationAndLogin;
-import com.codecool.vizsgaremek.pages.TermsAndConditions;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
@@ -22,8 +21,8 @@ class TestRegistration extends TestBase {
     void setUp() {
         super.setUp();
 
-        getPage(TermsAndConditions.class).navigateTo();
-        getPage(TermsAndConditions.class).acceptTnC();
+        getPage(RegistrationAndLogin.class).navigateTo();
+        getPage(RegistrationAndLogin.class).acceptTnC();
     }
 
     @Override
