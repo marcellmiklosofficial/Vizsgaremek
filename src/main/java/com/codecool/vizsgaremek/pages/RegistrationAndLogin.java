@@ -1,6 +1,7 @@
 package com.codecool.vizsgaremek.pages;
 
 import com.codecool.vizsgaremek.enums.Pages;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,6 +24,9 @@ public class RegistrationAndLogin extends Page {
     private static final By BUTTON_LOGIN = By.xpath("//button[@onclick='myFunction()']");
     private static final By TEXT_FAILED_LOGIN_CONFIRMATION = By.id("alert");
 
+    // - Logout
+    private static final By BUTTON_LOGOUT = By.id("logout-link");
+
     // - Terms and Conditions
     private static final By POPUP_TERMS_AND_CONDITIONS = By.className("popup");
     private static final By BUTTON_ACCEPT_TERMS_AND_CONDITIONS = By.id("terms-and-conditions-button");
@@ -32,10 +36,12 @@ public class RegistrationAndLogin extends Page {
     }
 
     // Terms and Conditions
+    @Step("Check if the Terms and Conditions popup is visible")
     public boolean verifyVisibilityOfTnCPopup() {
         return findElementOnPage(POPUP_TERMS_AND_CONDITIONS).isDisplayed();
     }
 
+    @Step("Accept Terms and Conditions popup")
     public void acceptTnC() {
         WebElement acceptTnCButton = findElementOnPage(BUTTON_ACCEPT_TERMS_AND_CONDITIONS);
 
@@ -45,6 +51,7 @@ public class RegistrationAndLogin extends Page {
     }
 
     // Registration
+    @Step("Register a new user with: {0}, {1}, {2}, {3}")
     public void register(String username, String password, String email, String description) {
         findElementOnPage(BUTTON_REGISTER_FORM).click();
         findElementOnPage(INPUT_USERNAME_REGISTRATION).sendKeys(username);
@@ -54,11 +61,13 @@ public class RegistrationAndLogin extends Page {
         findElementOnPage(BUTTON_REGISTER).click();
     }
 
+    @Step("Verify whether the registration was successful or not")
     public boolean verifySuccessfulRegistration() {
         return findElementOnPage(TEXT_CONFIRMATION_MESSAGE).getText().equals("User registered!");
     }
 
-    // Login
+    // Login - Logout
+    @Step("Login user with: {0}, {1}")
     public void login(String username, String password) {
         try {
             findElementOnPage(FORM_REGISTER_LOGIN).click();
@@ -71,6 +80,24 @@ public class RegistrationAndLogin extends Page {
         findElementOnPage(BUTTON_LOGIN).click();
     }
 
+    @Step("Logout the current user")
+    public void logout() {
+        if (isLoggedIn()) {
+            findElementOnPage(BUTTON_LOGOUT).click();
+        }
+    }
+
+    @Step("Check if any user is currently logged in")
+    public boolean isLoggedIn() {
+        try {
+            getDriver().findElement(BUTTON_LOGOUT);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    @Step("Verify whether the login was successful or not")
     public boolean verifySuccessfulLogin() {
         return !findElementOnPage(TEXT_FAILED_LOGIN_CONFIRMATION).getText().equals("Username or Password\nis not correct!");
     }

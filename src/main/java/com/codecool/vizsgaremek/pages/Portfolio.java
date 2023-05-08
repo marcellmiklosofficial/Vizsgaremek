@@ -1,6 +1,7 @@
 package com.codecool.vizsgaremek.pages;
 
 import com.codecool.vizsgaremek.enums.Pages;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -11,6 +12,7 @@ public class Portfolio extends Page {
         super(driver, Pages.PORTFOLIO_PAGE.getUrl());
     }
 
+    @Step("Get text from Portfolio Page header")
     public String getHeaderText() {
         return findElementOnPage(TEXT_HEADER).getText();
     }

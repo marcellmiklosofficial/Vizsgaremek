@@ -1,6 +1,7 @@
 package com.codecool.vizsgaremek.pages;
 
 import com.codecool.vizsgaremek.enums.Pages;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,6 +17,7 @@ public class Blog extends Page {
         super(driver, Pages.BLOG_PAGE.getUrl());
     }
 
+    @Step("Get all titles from a paginated list")
     public List<String> getAllTitlesFromMultiPageList() {
         List<String> titles = new ArrayList<>();
 

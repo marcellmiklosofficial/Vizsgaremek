@@ -66,7 +66,7 @@ class TestRegistration extends TestBase {
                     login.get("description").toString());
 
             Assertions.assertTrue(getPage(RegistrationAndLogin.class).verifySuccessfulRegistration());
-            Assertions.assertFalse(getPage(RegistrationAndLogin.class).isUserLoggedIn());
+            Assertions.assertFalse(getPage(RegistrationAndLogin.class).isLoggedIn());
 
             driver.navigate().refresh();
         }

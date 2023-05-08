@@ -1,6 +1,7 @@
 package com.codecool.vizsgaremek;
 
 import io.qameta.allure.Allure;
+import io.qameta.allure.Step;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -20,6 +21,7 @@ public final class TestUtils {
 
     private TestUtils() {}
 
+    @Step("Create a screenshot with the title: {0}")
     public static void makeScreenshot(String title, WebDriver driver) {
         Allure.addAttachment(title, new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
     }

@@ -21,7 +21,9 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Epic(TestConstants.NAME_EPIC)
@@ -80,7 +82,7 @@ class TestDataListing extends TestBase {
     }
 
     @Test
-    @DisplayName("Navbar content test")
+    @DisplayName("Navbar contents test")
     @Description("The navbar contains all items specified, possible multilingual test")
     @Story("User checks the navbar for all items present")
     @Severity(SeverityLevel.MINOR)
@@ -92,7 +94,11 @@ class TestDataListing extends TestBase {
                 TestResources.getResource(TestResources.ResourceKeys.NAV_BAR_TEXT_PORTFOLIO),
                 TestResources.getResource(TestResources.ResourceKeys.NAV_BAR_TEXT_BLOG),
                 TestResources.getResource(TestResources.ResourceKeys.NAV_BAR_TEXT_GETINTOUCH));
+        List<String> expectedNavBarItemLabels = new ArrayList<>(getPage(Landing.class).getNavMenuLabels());
 
-        Assertions.assertTrue(getPage(Landing.class).verifyNavMenuLabels(navBarItemLabels));
+        Collections.sort(navBarItemLabels);
+        Collections.sort(expectedNavBarItemLabels);
+
+        Assertions.assertEquals(expectedNavBarItemLabels, navBarItemLabels);
     }
 }

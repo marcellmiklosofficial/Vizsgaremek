@@ -1,12 +1,11 @@
 package com.codecool.vizsgaremek.pages;
 
 import com.codecool.vizsgaremek.enums.Pages;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Landing extends Page {
@@ -19,15 +18,12 @@ public class Landing extends Page {
         super(driver, Pages.LANDING_PAGE.getUrl());
     }
 
-    public boolean verifyNavMenuLabels(List<String> navMenuItems) {
-        List<String> navMenuItemsOnPage = new ArrayList<>(findElementsOnPage(LIST_NAV_MENU_ITEM).stream().map(WebElement::getText).toList());
-
-        Collections.sort(navMenuItems);
-        Collections.sort(navMenuItemsOnPage);
-
-        return navMenuItems.equals(navMenuItemsOnPage);
+    @Step("Gather current nav-menu items displayed on the current page")
+    public List<String> getNavMenuLabels() {
+        return findElementsOnPage(LIST_NAV_MENU_ITEM).stream().map(WebElement::getText).toList();
     }
 
+    @Step("Click on the profile link")
     public void goToProfile() {
         findElementOnPage(BUTTON_PROFILE).click();
     }

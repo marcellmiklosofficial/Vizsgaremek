@@ -1,6 +1,7 @@
 package com.codecool.vizsgaremek.pages;
 
 import com.codecool.vizsgaremek.enums.Pages;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -18,6 +19,7 @@ public class Contact extends Page {
         super(driver, Pages.CONTACT_PAGE.getUrl());
     }
 
+    @Step("Fill out the contact form and send it")
     public void sendMessage(String firstname, String lastname, String email, String projectType, String about) {
         findElementOnPage(INPUT_NAME_FIRST).sendKeys(firstname);
         findElementOnPage(INPUT_NAME_LAST).sendKeys(lastname);
@@ -27,6 +29,7 @@ public class Contact extends Page {
         findElementOnPage(BUTTON_SEND).click();
     }
 
+    @Step("Check if the status text is visible")
     public boolean isMessageSentTextVisible() {
         return findElementOnPage(TEXT_STATUS).isDisplayed();
     }

@@ -2,7 +2,6 @@ package com.codecool.vizsgaremek.functions;
 
 import com.codecool.vizsgaremek.TestConstants;
 import com.codecool.vizsgaremek.enums.Pages;
-import com.codecool.vizsgaremek.pages.Landing;
 import com.codecool.vizsgaremek.pages.RegistrationAndLogin;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
@@ -52,7 +51,7 @@ class TestLoginAndLogout extends TestBase {
     void login() {
         getPage(RegistrationAndLogin.class).login(TestConstants.LOGIN_BUILT_IN_USERNAME, TestConstants.LOGIN_BUILT_IN_PASSWORD);
 
-        Assertions.assertTrue(getPage(Landing.class).isUserLoggedIn(), "User failed to log in");
+        Assertions.assertTrue(getPage(RegistrationAndLogin.class).isLoggedIn(), "User failed to log in");
         Assertions.assertEquals(Pages.LANDING_PAGE.getUrl(), driver.getCurrentUrl(), "Login failed with valid credentials");
     }
 
@@ -65,10 +64,10 @@ class TestLoginAndLogout extends TestBase {
     void logout() {
         getPage(RegistrationAndLogin.class).login(TestConstants.LOGIN_BUILT_IN_USERNAME, TestConstants.LOGIN_BUILT_IN_PASSWORD);
 
-        Assertions.assertTrue(getPage(Landing.class).isUserLoggedIn());
+        Assertions.assertTrue(getPage(RegistrationAndLogin.class).isLoggedIn());
 
-        getPage(Landing.class).logoutUser();
+        getPage(RegistrationAndLogin.class).logout();
 
-        Assertions.assertFalse(getPage(Landing.class).isUserLoggedIn());
+        Assertions.assertFalse(getPage(RegistrationAndLogin.class).isLoggedIn());
     }
 }

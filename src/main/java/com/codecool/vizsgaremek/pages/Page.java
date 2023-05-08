@@ -12,8 +12,6 @@ import java.time.Duration;
 import java.util.List;
 
 public abstract class Page {
-    private static final By BUTTON_LOGOUT = By.id("logout-link");
-
     private final WebDriver driver;
     private final Wait<WebDriver> wait;
     private final String url;
@@ -33,21 +31,6 @@ public abstract class Page {
 
     public final void navigateTo() {
         driver.navigate().to(url);
-    }
-
-    public final void logoutUser() {
-        if (isUserLoggedIn()) {
-            findElementOnPage(BUTTON_LOGOUT).click();
-        }
-    }
-
-    public final boolean isUserLoggedIn() {
-        try {
-            driver.findElement(BUTTON_LOGOUT);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
     }
 
     public final WebElement findElementOnPage(By locator) {

@@ -1,6 +1,7 @@
 package com.codecool.vizsgaremek.pages;
 
 import com.codecool.vizsgaremek.enums.Pages;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -17,6 +18,7 @@ public class Profile extends Page {
         super(driver, Pages.PROFILE_PAGE.getUrl());
     }
 
+    @Step("Overwrite current account information")
     public void overwriteAccountInfo(String name, String bio, String phoneNo) {
         findElementOnPage(INPUT_NAME).sendKeys(name);
         findElementOnPage(INPUT_BIO).sendKeys(bio);
@@ -24,10 +26,12 @@ public class Profile extends Page {
         findElementOnPage(BUTTON_SAVE_PROFILE).click();
     }
 
+    @Step("Verify whether the profile update was successful")
     public boolean verifyProfileUpdate() {
         return findElementOnPage(TEXT_CONFIRMATION).getText().equals("Profile Edited!");
     }
 
+    @Step("Delete current account")
     public void deleteAccount() {
         findElementOnPage(BUTTON_DELETE_PROFILE1).click();
         findElementOnPage(BUTTON_DELETE_PROFILE2).click();
