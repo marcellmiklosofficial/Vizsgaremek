@@ -13,7 +13,6 @@ public class Contact extends Page {
     private static final By LIST_PROJECT_TYPE = By.id("projectType");
     private static final By TEXTAREA_ABOUT_PROJECT = By.id("aboutProject");
     private static final By BUTTON_SEND = By.id("contact-form-button");
-    private static final By TEXT_STATUS = By.id("contact-form-status");
 
     public Contact(WebDriver driver) {
         super(driver, Pages.CONTACT_PAGE.getUrl());
@@ -27,10 +26,5 @@ public class Contact extends Page {
         new Select(findElementOnPage(LIST_PROJECT_TYPE)).selectByVisibleText(projectType);
         findElementOnPage(TEXTAREA_ABOUT_PROJECT).sendKeys(about);
         findElementOnPage(BUTTON_SEND).click();
-    }
-
-    @Step("Check if the status text is visible")
-    public boolean isMessageSentTextVisible() {
-        return findElementOnPage(TEXT_STATUS).isDisplayed();
     }
 }

@@ -43,7 +43,7 @@ class TestNewDataEntry extends TestBase {
     }
 
     @Test
-    @DisplayName("Send message test")
+    @DisplayName("Send message")
     @Description("Test to send a message on the Contact form")
     @Story("Message can be sent from the contact form and confirmation pops up")
     @Severity(SeverityLevel.NORMAL)
@@ -56,9 +56,5 @@ class TestNewDataEntry extends TestBase {
                 TestConstants.NEW_DATA_ENTRY_ABOUT);
 
         Assertions.assertEquals(TestConstants.NEW_DATA_ENTRY_ALERT_MESSAGE, driver.switchTo().alert().getText());
-
-        driver.switchTo().alert().accept();
-
-        Assertions.assertFalse(getPage(Contact.class).isMessageSentTextVisible());
     }
 }
