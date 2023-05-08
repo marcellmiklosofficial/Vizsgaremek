@@ -48,19 +48,17 @@ class TestNewDataEntry extends TestBase {
     @Story("Message can be sent from the contact form and confirmation pops up")
     @Severity(SeverityLevel.NORMAL)
     void sendMessage() {
-        String testFirstname = "Peter";
-        String testLastname = "Doe";
-        String testEmail = "example@first.second";
-        String testProjectType = "Web Design";
-        String testAbout = "Lorem ipsum";
-        String expectedAlertMessage = "Message sent!";
+        getPage(Contact.class).sendMessage(
+                TestConstants.NEW_DATA_ENTRY_FIRSTNAME,
+                TestConstants.NEW_DATA_ENTRY_LASTNAME,
+                TestConstants.NEW_DATA_ENTRY_EMAIL,
+                TestConstants.NEW_DATA_ENTRY_PROJECT_TYPE,
+                TestConstants.NEW_DATA_ENTRY_ABOUT);
 
-        getPage(Contact.class).sendMessage(testFirstname, testLastname, testEmail, testProjectType, testAbout);
-
-        Assertions.assertEquals(expectedAlertMessage, driver.switchTo().alert().getText());
+        Assertions.assertEquals(TestConstants.NEW_DATA_ENTRY_ALERT_MESSAGE, driver.switchTo().alert().getText());
 
         driver.switchTo().alert().accept();
 
-        Assertions.assertFalse(getPage(Contact.class).statusVisible());
+        Assertions.assertFalse(getPage(Contact.class).isMessageSentTextVisible());
     }
 }

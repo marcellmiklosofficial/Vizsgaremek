@@ -5,6 +5,7 @@ import com.codecool.vizsgaremek.TestUtils;
 import com.codecool.vizsgaremek.enums.Pages;
 import com.codecool.vizsgaremek.pages.Portfolio;
 import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
@@ -15,6 +16,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@Epic(TestConstants.NAME_EPIC)
 @DisplayName("Write Data To File Tests")
 class TestWriteDataToFile extends TestBase {
     /**
@@ -49,11 +51,10 @@ class TestWriteDataToFile extends TestBase {
     @Feature("Write Data To File")
     void writeHeaderTextToFile() {
         String headerText = getPage(Portfolio.class).getHeaderText();
-        String testFileName = "testOutput.txt";
 
-        TestUtils.writeToFile(headerText, testFileName);
+        TestUtils.writeToTestFile(headerText);
 
-        Assertions.assertEquals(headerText, TestUtils.readFromFile(testFileName));
+        Assertions.assertEquals(headerText, TestUtils.readFromTestFile());
     }
 
     @AfterAll

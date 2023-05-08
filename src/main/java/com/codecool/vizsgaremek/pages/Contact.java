@@ -27,7 +27,7 @@ public class Contact extends Page {
         findElementOnPage(BUTTON_SEND).click();
     }
 
-    public boolean statusVisible() {
+    public boolean isMessageSentTextVisible() {
         return findElementOnPage(TEXT_STATUS).isDisplayed();
     }
 }

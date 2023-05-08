@@ -59,7 +59,7 @@ class TestRegistration extends TestBase {
         List<Map<String, Object>> logins = new Yaml().load(Files.readString(Path.of("src/test/resources/test_logins.yml")));
 
         for (Map<String, Object> login : logins) {
-            getPage(RegistrationAndLogin.class).registerUser(
+            getPage(RegistrationAndLogin.class).register(
                     login.get("name").toString(),
                     login.get("password").toString(),
                     login.get("email").toString(),

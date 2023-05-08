@@ -50,7 +50,7 @@ class TestLoginAndLogout extends TestBase {
     @Severity(SeverityLevel.CRITICAL)
     @Feature("Login")
     void login() {
-        getPage(RegistrationAndLogin.class).loginBuiltInUser();
+        getPage(RegistrationAndLogin.class).login(TestConstants.LOGIN_BUILT_IN_USERNAME, TestConstants.LOGIN_BUILT_IN_PASSWORD);
 
         Assertions.assertTrue(getPage(Landing.class).isUserLoggedIn(), "User failed to log in");
         Assertions.assertEquals(Pages.LANDING_PAGE.getUrl(), driver.getCurrentUrl(), "Login failed with valid credentials");
@@ -63,12 +63,12 @@ class TestLoginAndLogout extends TestBase {
     @Severity(SeverityLevel.CRITICAL)
     @Feature("Logout")
     void logout() {
-        getPage(RegistrationAndLogin.class).loginBuiltInUser();
+        getPage(RegistrationAndLogin.class).login(TestConstants.LOGIN_BUILT_IN_USERNAME, TestConstants.LOGIN_BUILT_IN_PASSWORD);
 
-        Assertions.assertTrue(getPage(Landing.class).isUserLoggedIn(), "Login failed");
+        Assertions.assertTrue(getPage(Landing.class).isUserLoggedIn());
 
         getPage(Landing.class).logoutUser();
 
-        Assertions.assertFalse(getPage(Landing.class).isUserLoggedIn(), "Logout failed");
+        Assertions.assertFalse(getPage(Landing.class).isUserLoggedIn());
     }
 }

@@ -33,8 +33,12 @@ class TestExistingDataModificationAndDeletion extends TestBase {
 
         getPage(RegistrationAndLogin.class).navigateTo();
         getPage(RegistrationAndLogin.class).acceptTnC();
-        getPage(RegistrationAndLogin.class).registerCustomUser();
-        getPage(RegistrationAndLogin.class).loginCustomUser();
+        getPage(RegistrationAndLogin.class).register(
+                TestConstants.LOGIN_CUSTOM_USERNAME,
+                TestConstants.LOGIN_CUSTOM_PASSWORD,
+                TestConstants.REGISTRATION_EMAIL,
+                TestConstants.REGISTRATION_DESCRIPTION);
+        getPage(RegistrationAndLogin.class).login(TestConstants.LOGIN_CUSTOM_USERNAME, TestConstants.LOGIN_CUSTOM_PASSWORD);
         getPage(Landing.class).goToProfile();
     }
 
@@ -55,11 +59,10 @@ class TestExistingDataModificationAndDeletion extends TestBase {
     @Severity(SeverityLevel.NORMAL)
     @Feature("Existing Data Modification")
     void profileModification() {
-        String testName = "testName";
-        String testBio = "testData";
-        String testPhoneNo = "testNo";
-
-        getPage(Profile.class).overwriteAccountInfo(testName, testBio, testPhoneNo);
+        getPage(Profile.class).overwriteAccountInfo(
+                TestConstants.DATA_MANIPULATION_TEST_NAME,
+                TestConstants.DATA_MANIPULATION_TEST_BIO,
+                TestConstants.DATA_MANIPULATION_TEST_PHONE_NO);
 
         Assertions.assertTrue(getPage(Profile.class).verifyProfileUpdate());
     }
@@ -72,8 +75,8 @@ class TestExistingDataModificationAndDeletion extends TestBase {
     @Feature("Existing Data Deletion")
     void deleteProfile() {
         getPage(Profile.class).deleteAccount();
-        getPage(RegistrationAndLogin.class).loginCustomUser();
+        getPage(RegistrationAndLogin.class).login(TestConstants.LOGIN_CUSTOM_USERNAME, TestConstants.LOGIN_CUSTOM_PASSWORD);
 
-        Assertions.assertTrue(getPage(RegistrationAndLogin.class).verifyFailedLogin());
+        Assertions.assertFalse(getPage(RegistrationAndLogin.class).verifySuccessfulLogin());
     }
 }

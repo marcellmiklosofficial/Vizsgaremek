@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class TestUtils {
-    private static final String TEST_FILES_LOCATION = "src/test/resources/output/";
     private static final List<String> testFileNames = new ArrayList<>();
 
     private TestUtils() {}
@@ -25,21 +24,21 @@ public final class TestUtils {
         Allure.addAttachment(title, new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
     }
 
-    public static void writeToFile(String contents, String filename) {
+    public static void writeToTestFile(String contents) {
         createOutputFolder();
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(TEST_FILES_LOCATION + filename))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(TestConstants.WRITE_TO_FILE_TEST_FOLDER + TestConstants.WRITE_TO_FILE_TEST_FILE_NAME))) {
             writer.write(contents);
-            testFileNames.add(filename);
+            testFileNames.add(TestConstants.WRITE_TO_FILE_TEST_FILE_NAME);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public static String readFromFile(String filename) {
+    public static String readFromTestFile() {
         StringBuilder builder = new StringBuilder();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(TEST_FILES_LOCATION + filename))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(TestConstants.WRITE_TO_FILE_TEST_FOLDER + TestConstants.WRITE_TO_FILE_TEST_FILE_NAME))) {
             String line;
 
             while ((line = reader.readLine()) != null) {
@@ -54,16 +53,16 @@ public final class TestUtils {
 
     public static void deleteTestFiles() {
         for (String testFileName : testFileNames) {
-            new File(TEST_FILES_LOCATION + testFileName).delete();
+            new File(TestConstants.WRITE_TO_FILE_TEST_FOLDER + testFileName).delete();
         }
 
-        new File(TEST_FILES_LOCATION).delete();
+        new File(TestConstants.WRITE_TO_FILE_TEST_FOLDER).delete();
 
         testFileNames.clear();
     }
 
     private static void createOutputFolder() {
-        File testOutputFolder = new File(TEST_FILES_LOCATION);
+        File testOutputFolder = new File(TestConstants.WRITE_TO_FILE_TEST_FOLDER);
 
         if (!testOutputFolder.exists()) {
             testOutputFolder.mkdir();

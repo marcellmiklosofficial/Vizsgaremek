@@ -51,7 +51,12 @@ class TestMultiPageList extends TestBase {
     @Story("User can see all titles from all pages")
     @Severity(SeverityLevel.NORMAL)
     void gatherAllTitles() {
-        List<String> testData = Arrays.asList("Design Inspiration: The Best Projects From December", "The 10 Biggest Rebrands and Logo Designs of 2019", "Design Inspiration: The Best Projects From November", "Pt Chooses Classic Blue for Its Colour of the Year 2020", "The 10 Biggest Product Stories of 2019");
+        List<String> testData = Arrays.asList(
+                "Design Inspiration: The Best Projects From December",
+                "The 10 Biggest Rebrands and Logo Designs of 2019",
+                "Design Inspiration: The Best Projects From November",
+                "Pt Chooses Classic Blue for Its Colour of the Year 2020",
+                "The 10 Biggest Product Stories of 2019");
 
         Assertions.assertEquals(testData, getPage(Blog.class).getAllTitlesFromMultiPageList());
     }
