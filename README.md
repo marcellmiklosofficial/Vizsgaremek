@@ -3,7 +3,7 @@
 ## About
 
 * This project was created as the final exam for the Junior Automation Test Engineer course at [Codecool](https://codecool.com/hu/)
-* Project status: Work in progress
+* Project status: Prototype
 * Test cases: [Link](https://docs.google.com/spreadsheets/d/1rnPHnXwkC28fUkvBDFhVkE13j3qu2gfbwru6VXaqTQE/edit?usp=sharing)
 * Created by: Marcell Miklós
 
